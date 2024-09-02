@@ -31,19 +31,19 @@
 
     <div class="section-title text-center center">
         <h1 style="color:black"><strong><br><br> ExpV2S </b><strong></h1>
-        <br><br> 
-        <font color="black" size="4"> Download </font>
+        <!-- <br><br> 
+        <font color="black" size="4"> Code will be released </font>
         <a href="https://raw.githubusercontent.com/LipVoicer/LipVoicer.github.io/main/data/LRS2.zip"><font color="blue" size="4"><u>LRS2</u></a> 
             <font color="black" size="4">and </font>
         <a href="https://raw.githubusercontent.com/LipVoicer/LipVoicer.github.io/main/data/LRS3.zip"><font color="blue" size="4"><u>LRS3</u></a> <font color="black" size="4">videos in .mp4 format</font>
             
-        <br><br>    
+        <br><br>     -->
         <!-- <a href="extras.html"><font color="blue" size="4"><u> Additional Videos, Accents, PESQ Experiment Examples, Face Embeddings Ablations </u></font></a><br><br> -->
         <!-- <a href="revise.html"><font color="blue" size="4"><u> Comparison to ReVISE </u></font></a><br> -->
     </div>
 
     <div class="portfolio-item"> 
-        <img style="border:0px solid black;" src="img/method.png" class="img-responsive" alt="method"><br><br>
+        <img style="border:0px solid black;" src="img/Framework.jpg" class="img-responsive" alt="method"><br><br>
     </div> 
 
     <div class="row">
@@ -51,12 +51,13 @@
           <div class="col-md-10 col-md-offset-1">
 
                 <p style="color:black; font-family:Sans-Serif; font-size:16px">                         
-                  Lip-to-speech involves generating a natural-sounding audio synchronized with a soundless video of a person talking. Despite recent advances, current methods still cannot produce high-quality speech with high levels of intelligibility  for challenging and realistic datasets such as LRS3.
-
-                  In this work, we present LipVoicer, a novel method that generates high-quality speech, even for in-the-wild and rich datasets,  by incorporating the text modality. Given a silent video, we first predict the spoken text using a pre-trained lip-reading network. We then condition a diffusion model on the video, and use the extracted text through a classifier-guidance mechanism to produce the natural underlying mel-spectrogram, where an automatic speech recognition system (ASR) serves as the classifier.
-
-                  LipVoicer outperforms multiple lip-to-speech baselines on LRS3 and LRS2, which are in-the-wild datasets with hundreds of identities and an unrestricted vocabulary. Moreover, our experiments show that the inclusion of the text modality plays a major role in the quality and intelligibility measures, as well as in the reduction of word error rate (WER) metric of the generated speech. Finally, we demonstrate the effectiveness of LipVoicer through human evaluation, which shows that it produces more natural and synchronized speech signals compared to competing methods.
-                    This work has been partially supported by NVIDIA's academic hardware grant.
+                    Speech conveys a wealth of information beyond spoken words through vocal attributes such as emotion, pitch, age, and gender, which are often overlooked by current lip-to-speech (L2S) methods. To bridge 
+                    this gap, we introduce a novel task called expressive video-to-speech synthesis (EV2S), which aims to generate expressive speech from silent talking videos. Unlike traditional L2S, which focuses solely on producing intelligible speech, EV2S requires that the generated output not only synchronizes with lip motions but also aligns with facial movements. A key challenge in this task is to exploit the relationship between facial movements 
+                    and vocal attributes while preserving the integrity of the content. To overcome this, we categorize facial movements into two components: i) emotion-related styles—including emotion and pitch, which can vary over time, and ii) speaker characteristcs—such as gender, accent, and age, which remain constant. We propose a disentangling strategy that implicitly separates facial information into speaker and emotion embeddings. Building upon this framework, 
+                    we develop a latent diffusion-based method for Expressive Video-to-Speech synthesis (ExpV2S), which
+                    conditions on these embeddings alongside content embeddings extracted from lip motion. Guided by these conditions, ExpV2S enables to control the spoken words, emotion styles and  speaker characteristics in the speech.
+                    We introduce two benchmarks: MEAD and CREMA, derived from emotional talking head synthesis
+                    datasets. Extensive experiments demonstrate that ExpV2S is capable of generating more expressive speech than existing lip-to-speech and text-to-speech methods, as evidenced by both quantitative metrics and human evaluations
                 </p> <br><hr><br>
       
           </div>
@@ -76,7 +77,7 @@
     <div class="section-title text-center center">
       <!-- <div class="col-md-20 col-md-offset--100"> -->
     
-        <p style="color:black; font-family:Sans-Serif; font-size:24px;"> LRS2 Dataset </p>
+        <p style="color:black; font-family:Sans-Serif; font-size:24px;"> CREMA-D Dataset </p>
         <br><br>
 
         <div style="width:1600px; margin:0 auto;">
@@ -85,7 +86,7 @@
                 <tr>
                 <th style=" background-color:white;position: sticky; top: 0; width: 20%; text-align: center; padding: 10px; color:black">Ground-Truth</th>
                 <th style=" background-color:white; position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">ExpV2S (Ours) </th>
-                <th style=" background-color:white; position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">GradTTS</th>
+                <th style=" background-color:white; position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">LipVoicer</th>
                 <th style="background-color:white;position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">EmotiVoice</th>
                 <th style="background-color:white;position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">VoiceClone</th>
                 <!-- <th style="background-color:white;position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">SVTS</th> -->
@@ -94,338 +95,312 @@
 
                 <tr>
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                    <video width="250" controls><source src="data/LRS2/good/6365141533126941637_00060_gt.webm" type="video/webm"></video>
+                    <video width="250" controls><source src="data/1016/gt/1016_TIE_ANG_XX.mp4" type="video/mp4"></video>
                     </td>
             
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6365141533126941637_00060_lipvoicer.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/expv2s/1016_TIE_ANG_XX.mp4" type="video/mp4"></video>
                     </td>
-            
+
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                    <video width="250" controls><source src="data/LRS2/good/6365141533126941637_00060_lipvoicer_wo_asr.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/lipvoicer/1016_TIE_ANG_XX.mp4" type="video/mp4"></video>
                     </td>
-            
+
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6365141533126941637_00060_lip2speech.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/emotivoice/1016_TIE_ANG_XX.mp4" type="video/mp4"></video>
                     </td>
-            
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6365141533126941637_00060_vcagan.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/clonevoice/1016_TIE_ANG_XX.mp4" type="video/mp4"></video>
                     </td>
-            
-                    <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/66365141533126941637_00060_svts.webm" type="video/webm"></video>
-                    </td> -->
+
                 </tr>
 
                 <tr>
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                    <video width="250" controls><source src="data/LRS2/good/6355861826787125225_00006_gt.webm" type="video/webm"></video>
+                    <video width="250" controls><source src="data/1016/gt/1016_TIE_DIS_XX.mp4" type="video/mp4"></video>
                     </td>
             
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6355861826787125225_00006_lipvoicer.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/expv2s/1016_TIE_DIS_XX.mp4" type="video/mp4"></video>
                     </td>
-            
+
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                    <video width="250" controls><source src="data/LRS2/good/6355861826787125225_00006_lipvoicer_wo_asr.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/lipvoicer/1016_TIE_DIS_XX.mp4" type="video/mp4"></video>
                     </td>
-            
+
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6355861826787125225_00006_lip2speech.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/emotivoice/1016_TIE_DIS_XX.mp4" type="video/mp4"></video>
                     </td>
-            
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6355861826787125225_00006_vcagan.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/clonevoice/1016_TIE_DIS_XX.mp4" type="video/mp4"></video>
                     </td>
-            
-                    <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6355861826787125225_00006_svts.webm" type="video/webm"></video>
-                    </td> -->
+
                 </tr>
 
                 <tr>
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                    <video width="250" controls><source src="data/LRS2/good/6353179190214044575_00010_gt.webm" type="video/webm"></video>
+                    <video width="250" controls><source src="data/1016/gt/1016_TIE_FEA_XX.mp4" type="video/mp4"></video>
                     </td>
             
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6353179190214044575_00010_lipvoicer.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/expv2s/1016_TIE_FEA_XX.mp4" type="video/mp4"></video>
                     </td>
-            
+
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                    <video width="250" controls><source src="data/LRS2/good/6353179190214044575_00010_lipvoicer_wo_asr.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/lipvoicer/1016_TIE_FEA_XX.mp4" type="video/mp4"></video>
                     </td>
-            
+
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6353179190214044575_00010_lip2speech.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/emotivoice/1016_TIE_FEA_XX.mp4" type="video/mp4"></video>
                     </td>
-            
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6353179190214044575_00010_vcagan.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/clonevoice/1016_TIE_FEA_XX.mp4" type="video/mp4"></video>
                     </td>
-            
-                    <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6353179190214044575_00010_svts.webm" type="video/webm"></video>
-                    </td> -->
+
                 </tr>
 
                 <tr>
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                    <video width="250" controls><source src="data/LRS2/good/6350921755403330389_00056_gt.webm" type="video/webm"></video>
+                    <video width="250" controls><source src="data/1016/gt/1016_TIE_HAP_XX.mp4" type="video/mp4"></video>
                     </td>
             
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6350921755403330389_00056_lipvoicer.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/expv2s/1016_TIE_HAP_XX.mp4" type="video/mp4"></video>
                     </td>
-            
+
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                    <video width="250" controls><source src="data/LRS2/good/6350921755403330389_00056_lipvoicer_wo_asr.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/lipvoicer/1016_TIE_HAP_XX.mp4" type="video/mp4"></video>
                     </td>
-            
+
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6350921755403330389_00056_lip2speech.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/emotivoice/1016_TIE_HAP_XX.mp4" type="video/mp4"></video>
                     </td>
-            
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6350921755403330389_00056_vcagan.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/clonevoice/1016_TIE_HAP_XX.mp4" type="video/mp4"></video>
                     </td>
-            
-                    <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6350921755403330389_00056_svts.webm" type="video/webm"></video>
-                    </td> -->
+
                 </tr>
 
                 <tr>
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                    <video width="250" controls><source src="data/LRS2/good/6338645020884458400_00071_gt.webm" type="video/webm"></video>
+                    <video width="250" controls><source src="data/1016/gt/1016_TIE_NEU_XX.mp4" type="video/mp4"></video>
                     </td>
             
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6338645020884458400_00071_lipvoicer.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/expv2s/1016_TIE_NEU_XX.mp4" type="video/mp4"></video>
                     </td>
-            
+
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                    <video width="250" controls><source src="data/LRS2/good/6338645020884458400_00071_lipvoicer_wo_asr.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/lipvoicer/1016_TIE_NEU_XX.mp4" type="video/mp4"></video>
                     </td>
-            
+
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6338645020884458400_00071_lip2speech.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/emotivoice/1016_TIE_NEU_XX.mp4" type="video/mp4"></video>
                     </td>
-            
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6338645020884458400_00071_vcagan.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/clonevoice/1016_TIE_NEU_XX.mp4" type="video/mp4"></video>
                     </td>
-            
-                    <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6338645020884458400_00071_svts.webm" type="video/webm"></video>
-                    </td> -->
+
                 </tr>
 
                 <tr>
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                    <video width="250" controls><source src="data/LRS2/good/6335305254315087182_00057_gt.webm" type="video/webm"></video>
+                    <video width="250" controls><source src="data/1016/gt/1016_TIE_SAD_XX.mp4" type="video/mp4"></video>
                     </td>
             
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6335305254315087182_00057_lipvoicer.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/expv2s/1016_TIE_SAD_XX.mp4" type="video/mp4"></video>
                     </td>
-            
+
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                    <video width="250" controls><source src="data/LRS2/good/6335305254315087182_00057_lipvoicer_wo_asr.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/lipvoicer/1016_TIE_SAD_XX.mp4" type="video/mp4"></video>
                     </td>
-            
+
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6335305254315087182_00057_lip2speech.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/emotivoice/1016_TIE_SAD_XX.mp4" type="video/mp4"></video>
                     </td>
-            
                     <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6335305254315087182_00057_vcagan.webm" type="video/webm"></video>
+                        <video width="250" controls><source src="data/1016/clonevoice/1016_TIE_SAD_XX.mp4" type="video/mp4"></video>
                     </td>
-            
-                    <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                        <video width="250" controls><source src="data/LRS2/good/6335305254315087182_00057_svts.webm" type="video/webm"></video>
-                    </td> -->
+
                 </tr>
 
             </table>
         </div>
 
     <br><br><br>
-    <p style="color:black; font-family:Sans-Serif; font-size:24px;"> CREMA-D </p>
+    <p style="color:black; font-family:Sans-Serif; font-size:24px;"> MEAD Dataset</p>
     <br><br>
-
-    <div style="width:1620px; margin:0 auto;">
+    <div style="width:1600px; margin:0 auto;">
 
         <table border=0 justify="center" cellpadding="20px" style="width: 95%">
-            <tr>
-                <th style=" background-color:white;position: sticky; top: 0; width: 20%; text-align: center; padding: 10px; color:black">Ground-Truth</th>
-                <th style=" background-color:white; position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">LipVoicer (Ours) </th>
-                <th style=" background-color:white; position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">LipVoicer (Ours) w/o Guidance </th>
-                <th style="background-color:white;position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">Lip2Speech</th>
-                <th style="background-color:white;position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">VCA-GAN</th>
-                <!-- <th style="background-color:white;position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">SVTS</th> -->
-            </tr>
+        <tr>
+        <th style=" background-color:white;position: sticky; top: 0; width: 20%; text-align: center; padding: 10px; color:black">Ground-Truth</th>
+        <th style=" background-color:white; position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">ExpV2S (Ours) </th>
+        <th style=" background-color:white; position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">TTS</th>
+        <th style="background-color:white;position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">EmotiVoice</th>
+        <th style="background-color:white;position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">VoiceClone</th>
+        <!-- <th style="background-color:white;position: sticky; top: 0;width: 20%; text-align: center; padding: 10px; color:black">SVTS</th> -->
+        </tr>
+        
+        
+        <tr>
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+        <video width="250" controls><source src="data/M003/gt/ang.mp4" type="video/mp4"></video>
+        </td>
+        
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/expv2s/ang.mp4" type="video/mp4"></video>
+        </td>
+        
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/tts/ang.mp4" type="video/mp4"></video>
+        </td>
+        
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/emotivoice/ang.mp4" type="video/mp4"></video>
+        </td>
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/clonevoice/ang.mp4" type="video/mp4"></video>
+        </td>
+        
+        </tr>
+        
+        <tr>
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+        <video width="250" controls><source src="data/M003/gt/dis.mp4" type="video/mp4"></video>
+        </td>
+        
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/expv2s/dis.mp4" type="video/mp4"></video>
+        </td>
+        
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/tts/dis.mp4" type="video/mp4"></video>
+        </td>
+        
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/emotivoice/dis.mp4" type="video/mp4"></video>
+        </td>
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/clonevoice/dis.mp4" type="video/mp4"></video>
+        </td>
+        
+        </tr>
+        
+        <tr>
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+        <video width="250" controls><source src="data/M003/gt/fea.mp4" type="video/mp4"></video>
+        </td>
+        
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/expv2s/fea.mp4" type="video/mp4"></video>
+        </td>
+        
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/tts/fea.mp4" type="video/mp4"></video>
+        </td>
+        
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/emotivoice/fea.mp4" type="video/mp4"></video>
+        </td>
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/clonevoice/fea.mp4" type="video/mp4"></video>
+        </td>
+        
+        </tr>
+        
+        <tr>
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+        <video width="250" controls><source src="data/M003/gt/hap.mp4" type="video/mp4"></video>
+        </td>
+        
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/expv2s/hap.mp4" type="video/mp4"></video>
+        </td>
+        
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/tts/hap.mp4" type="video/mp4"></video>
+        </td>
+        
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/emotivoice/hap.mp4" type="video/mp4"></video>
+        </td>
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/clonevoice/hap.mp4" type="video/mp4"></video>
+        </td>
+        
+        </tr>
+        
+        <tr>
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+        <video width="250" controls><source src="data/M003/gt/neu.mp4" type="video/mp4"></video>
+        </td>
+        
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/expv2s/neu.mp4" type="video/mp4"></video>
+        </td>
+        
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/tts/neu.mp4" type="video/mp4"></video>
+        </td>
+        
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/emotivoice/neu.mp4" type="video/mp4"></video>
+        </td>
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/clonevoice/neu.mp4" type="video/mp4"></video>
+        </td>
+        
+        </tr>
+        
+        <tr>
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+        <video width="250" controls><source src="data/M003/gt/sad.mp4" type="video/mp4"></video>
+        </td>
+        
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/expv2s/sad.mp4" type="video/mp4"></video>
+        </td>
+        
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/tts/sad.mp4" type="video/mp4"></video>
+        </td>
+        
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/emotivoice/sad.mp4" type="video/mp4"></video>
+        </td>
+        <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/clonevoice/sad.mp4" type="video/mp4"></video>
+        </td>
+        
+        </tr>
 
-
-            <tr>
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/uJr4wGcLNsA_00005_gt.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/uJr4wGcLNsA_00005_lipvoicer.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/uJr4wGcLNsA_00005_lipvoicer_wo_asr.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/uJr4wGcLNsA_00005_lip2speech.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/uJr4wGcLNsA_00005_vcagan.webm" type="video/webm"></video>
-                </td>
-
-                <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/uJr4wGcLNsA_00005_svts.webm" type="video/webm"></video>
-                </td> -->
-            </tr>
-
-            <tr>
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/SSzRfSJTNW4_00001_gt.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/SSzRfSJTNW4_00001_lipvoicer.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/SSzRfSJTNW4_00001_lipvoicer_wo_asr.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/SSzRfSJTNW4_00001_lip2speech.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/SSzRfSJTNW4_00001_vcagan.webm" type="video/webm"></video>
-                </td>
-
-                <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/SSzRfSJTNW4_00001_svts.webm" type="video/webm"></video>
-                </td> -->
-            </tr>
-
-            <tr>
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/qsJYrwzfd6w_00004_gt.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/qsJYrwzfd6w_00004_lipvoicer.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/qsJYrwzfd6w_00004_lipvoicer_wo_asr.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/qsJYrwzfd6w_00004_lip2speech.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/qsJYrwzfd6w_00004_vcagan.webm" type="video/webm"></video>
-                </td>
-<!-- 
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/qsJYrwzfd6w_00004_svts.webm" type="video/webm"></video>
-                </td> -->
-            </tr>
-
-            <tr>
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/pFDoCLf96Kg_00001_gt.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/pFDoCLf96Kg_00001_lipvoicer.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/pFDoCLf96Kg_00001_lipvoicer_wo_asr.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/pFDoCLf96Kg_00001_lip2speech.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/pFDoCLf96Kg_00001_vcagan.webm" type="video/webm"></video>
-                </td>
-
-                <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/pFDoCLf96Kg_00001_svts.webm" type="video/webm"></video>
-                </td> -->
-            </tr>
-
-            <tr>
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/0ZfSOArXbGQ_00003_gt.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/0ZfSOArXbGQ_00003_lipvoicer.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/0ZfSOArXbGQ_00003_lipvoicer_wo_asr.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/0ZfSOArXbGQ_00003_lip2speech.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/0ZfSOArXbGQ_00003_vcagan.webm" type="video/webm"></video>
-                </td>
-
-                <!-- <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/0ZfSOArXbGQ_00003_svts.webm" type="video/webm"></video>
-                </td> -->
-            </tr>
-
-            <tr>
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/NqOjj1FCcVY_00007_gt.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/NqOjj1FCcVY_00007_lipvoicer.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/NqOjj1FCcVY_00007_lipvoicer_wo_asr.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/NqOjj1FCcVY_00007_lip2speech.webm" type="video/webm"></video>
-                </td>
-
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/NqOjj1FCcVY_00007_vcagan.webm" type="video/webm"></video>
-                </td>
-<!-- 
-                <td style="width: 20%; text-align: center; padding: 10px; color:black">
-                <video width="250" controls><source src="data/LRS3/good/NqOjj1FCcVY_00007_svts.webm" type="video/webm"></video>
-                </td> -->
-            </tr>
+        <tr>
+            <td style="width: 20%; text-align: center; padding: 10px; color:black">
+            <video width="250" controls><source src="data/M003/gt/sup.mp4" type="video/mp4"></video>
+            </td>
             
+            <td style="width: 20%; text-align: center; padding: 10px; color:black">
+                <video width="250" controls><source src="data/M003/expv2s/sup.mp4" type="video/mp4"></video>
+            </td>
+            
+            <td style="width: 20%; text-align: center; padding: 10px; color:black">
+                <video width="250" controls><source src="data/M003/tts/sup.mp4" type="video/mp4"></video>
+            </td>
+            
+            <td style="width: 20%; text-align: center; padding: 10px; color:black">
+                <video width="250" controls><source src="data/M003/emotivoice/sup.mp4" type="video/mp4"></video>
+            </td>
+            <td style="width: 20%; text-align: center; padding: 10px; color:black">
+                <video width="250" controls><source src="data/M003/clonevoice/sup.mp4" type="video/mp4"></video>
+            </td>
+            
+            </tr>
+        
         </table>
-    </div>
+        </div>
+    
 
     <!-- <br><br>
     <p style="color:black; font-family:Sans-Serif; font-size:24px;"> Failure Cases </p>
